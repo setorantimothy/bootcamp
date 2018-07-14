@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Generate Code Via palen</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+<script>
+	function generate(){
+		data = "abcdefghijklmnopqrstuvwxyz1234567890";
+		jlh_kode = 300;
+	for(z = 0;z <=jlh_kode;z++){
+		chars = 4;
+		kode1 = "";
+		kode2 = "";
+		kode3 = "";
+		kode4 = "";
+		for( i = 0; i < chars; i++ ) {
+			r = Math.floor(Math.random()*data.length);
+		 	data_rand = data[r];
+		 	kode1 += data_rand;		
+		}
+		for (x = 0;x<chars;x++){
+			r = Math.floor(Math.random()*data.length);
+		 	data_rand = data[r];
+		 	kode2 += data_rand;
+		}
+		for( i = 0; i < chars; i++ ) {
+			r = Math.floor(Math.random()*data.length);
+		 	data_rand = data[r];
+		 	kode3 += data_rand;		
+		}
+		for (x = 0;x<chars;x++){
+			r = Math.floor(Math.random()*data.length);
+		 	data_rand = data[r];
+		 	kode4 += data_rand;
+		}
+		kode = kode1+"-"+kode2+"-"+kode3+"-"+kode4+"\n";
+		document.getElementById('kode_tampil').innerHTML += kode;
+		console.log(kode);
+		}
+	}
+
+</script>
+<body>
+<nav class="nav">
+		<a href="soal1.html" class="nav-link">Soal 1</a>
+		<a href="soal2.html" class="nav-link">Soal 2</a>
+		<a href="soal3.html" class="nav-link">Soal 3</a>
+		<a href="soal4.html" class="nav-link">Soal 4</a>
+		<a href="soal5.php" class="nav-link">Soal 5</a>
+		<a href="soal6.php" class="nav-link">Soal 6</a>
+		<a href="soal7.php" class="nav-link">Soal 7</a>
+	</nav>
+<button onclick="generate()">Generate Code</button>
+<textarea id="kode_tampil" class="form-control" rows="5"></textarea>
+<script src="js/bootstrap.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validasi</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+<body>
+<nav class="nav">
+		<a href="soal1.html" class="nav-link">Soal 1</a>
+		<a href="soal2.html" class="nav-link">Soal 2</a>
+		<a href="soal3.html" class="nav-link">Soal 3</a>
+		<a href="soal4.html" class="nav-link">Soal 4</a>
+		<a href="soal5.php" class="nav-link">Soal 5</a>
+		<a href="soal6.php" class="nav-link">Soal 6</a>
+		<a href="soal7.php" class="nav-link">Soal 7</a>
+	</nav>Username : 
+<input type="text" id="username" placeholder="username"><br>
+Email : 
+<input type="email" name="email" id="email" placeholder="email@email.com"><br>
+Phone Number : 
+<input type="text" id="phonenumber" pattern="[0-9]+" placeholder="08982866621 / +62 8982866621" value=""><br>
+
+<button onclick="cek()">Submit</button>
+</body>
+
+<script>
+	function pn_patern(phonenumber){
+		patern = /[\d+\+\s]/g;
+		phonenumber =  phonenumber.match(patern);
+			console.log(phonenumber);
+		return phonenumber;
+
+	}
+	function cek() {
+			username = document.getElementById('username').value;
+			email = document.getElementById('email').value;
+			phonenumber = document.getElementById('phonenumber').value;
+			patern = /[\d+\+\s]/g;
+			if(username!="" && email!="" && phonenumber!="" ){
+				if(username == username.toLowerCase()){
+					if(email==email.toLowerCase()){
+						email_at = email.indexOf("@");
+						if(email_at>4){
+							/*biasannya minimal 6-8 huruf didepan @ */
+							phonenumber = pn_patern(phonenumber);
+							pn_lama = "";
+							for (i=0;i<=phonenumber.length-1;i++){
+							pn = phonenumber.toString();
+							pn_s = pn.split(",");
+							pn_lama = pn_lama+pn_s[i];
+							}
+							alert(pn_lama);
+							document.getElementById('phonenumber').value= pn_lama;
+						}
+						else
+						{
+							alert("Masukan email yang benar");
+						}
+					}
+					else
+					{
+						alert("Email menggunakan huruf besar");
+					}
+
+				}
+				else{
+					alert("Username menggunakan huruf besar");
+				}
+			}
+
+		}	
+
+
+email_at = email.indexOf("@");
+					if(email_at>=1){
+						alert(email_at);
+						if(email.toLowerCase()){
+							alert(email);
+						}
+						else
+						{
+							alert("email menggunakan huruf besar");
+						}
+					}else if(email_at<1)
+					{
+						alert('ga ada @');
+					}
+</script>
+<script src="js/bootstrap.js"></script>
+<!-- 
+check valid uppercase and lower : saya cari distak overflow
+ -->
+</html>

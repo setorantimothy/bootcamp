@@ -1,0 +1,39 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<nav class="nav">
+		<a href="soal1.html" class="nav-link">Soal 1</a>
+		<a href="soal2.html" class="nav-link">Soal 2</a>
+		<a href="soal3.html" class="nav-link">Soal 3</a>
+		<a href="soal4.html" class="nav-link">Soal 4</a>
+		<a href="soal5.php" class="nav-link">Soal 5</a>
+		<a href="soal6.php" class="nav-link">Soal 6</a>
+		<a href="soal7.php" class="nav-link">Soal 7</a>
+	</nav>
+<script src="js/bootstrap.js"></script>
+<script>
+function hitung(){
+		total = document.getElementById('total').value;
+		kembali="";
+		if(total<=500){
+			alert('masukan minimal 500');
+		}else{
+		array = ["50000","20000","10000","5000","2000","1000","500"];
+		}
+		for(i=0;i<=array.length;i++){
+			sisa = total-array[i];
+			if(sisa < 0){
+				total = total;
+			}else if (sisa > 0){
+				total = sisa;
+				kembali += array[i]+",";
+			}else if(sisa == 0){
+				kembali += array[i];
+				total = sisa;
+			}
+		}
+		document.getElementById('kembalian').innerHTML=kembali;
+}
+
+</script>
+<input type="number" id="total" placeholder="total" min="500">
+<button onclick="hitung()">Hitung</button>
+<p id="kembalian"></p>

@@ -1,0 +1,97 @@
+
+<script src="js/bootstrap.js"></script>
+<script>
+
+function biodata(nama,alamat,hobi,sekolah,is_married,skills){
+	/*Data JSON*/
+	data = {
+			"name":"nama",
+			"address":"pontianak",
+			"hobbies":["berenang","ga ada hobi","lari"],
+			"is_married":false,
+			"school":{"sma":"highSchool","kul":"University"},
+			"skills":{"skill":["PHP","Jquery","MYSQL","ga ada skill"]}
+			}
+
+	if(sekolah=="sma"){
+		sekolah = data.school.sma;
+	}else{
+		sekolah = data.school.kul;
+	}
+	json_data = {
+		"name":nama,
+		"address":alamat,
+		"hobbies":data.hobbies[hobi],
+		"is_married":is_married,
+		"school":sekolah,
+		"skills":data.skills.skill[skills]
+	}
+	return json_data;
+}
+
+function cmd_json(){
+	console.clear();
+	nama = document.getElementById('nama').value;
+	alamat = document.getElementById('address').value;
+	hobi = document.getElementById('hobbies').value;
+	school = document.getElementById('school').value;
+	is_married = document.getElementById('is_married').value;
+	skills = document.getElementById('skills').value;
+	if(is_married=="1"){
+		is_married=true;
+	}else{
+		is_married=false;
+	}
+
+	
+	json_data = biodata(nama,alamat,hobi,school,is_married,skills);
+	data_txt = JSON.stringify(data);
+	json_txt = JSON.stringify(json_data);
+	document.getElementById('tampil').innerHTML = "Data Sebelumya : <br>"+data_txt;
+	document.getElementById('tampil').innerHTML += "<br><br>Data Sesudahnya :<br> "+json_txt;
+	console.log(json_data);
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<nav class="nav">
+		<a href="soal1.html" class="nav-link">Soal 1</a>
+		<a href="soal2.html" class="nav-link">Soal 2</a>
+		<a href="soal3.html" class="nav-link">Soal 3</a>
+		<a href="soal4.html" class="nav-link">Soal 4</a>
+		<a href="soal5.php" class="nav-link">Soal 5</a>
+		<a href="soal6.php" class="nav-link">Soal 6</a>
+		<a href="soal7.php" class="nav-link">Soal 7</a>
+	</nav>
+Nama : 
+<input type="text" id="nama" placeholder="nama"><br>
+Alamat : 
+<input type="text" id="address" placeholder="address"><br>
+Hobi : 
+<select id="hobbies" placeholder="hobi">
+	<option value="0">Berenang</option>
+	<option value="1">Gada hobi</option>
+	<option value="2">lari</option>
+</select><br>
+Status (Pernikahan) : 
+<select id="is_married">
+	<option value="0">Belum Menikah</option>
+	<option value="1">Menikah</option>
+</select><br>
+School : 
+<select id="school">
+	<option value="sma">HighSchool</option>
+	<option value="kul">University</option>
+</select><br>
+Skills : 
+<select id="skills">
+	<option value="0">PHP</option>
+	<option value="1">Jquery</option>
+	<option value="2">MYSQL</option>
+	<option value="3">Ga ada skill</option>
+</select><br>
+<div id="tampil">
+*Check data JSON di console log<br>
+</div>
+<button onclick="cmd_json()">Buat Data</button>
+
